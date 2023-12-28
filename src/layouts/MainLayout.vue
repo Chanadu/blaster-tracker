@@ -14,10 +14,10 @@ import LayoutHeaderComponent from 'src/components/layout_components/LayoutHeader
 <style scoped lang="scss">
 .bg-grad {
 	background-image: linear-gradient(
-		to top,
-		$dark-page 0%,
-		$dark-page 85%,
-		$primary
+		to bottom,
+		$primary 0%,
+		$dark-page 10em,
+		$dark-page
 	);
 }
 </style>
