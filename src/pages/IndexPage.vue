@@ -1,9 +1,10 @@
 <template>
-	<q-page class="column q-pa-xl gap-3 q-gutter-lg">
+	<q-page class="column q-pa-xl q-gutter-lg">
 		<section-container-component
-			v-for="{ id, name } in items"
+			v-for="{ id, name, toLocation } in items"
 			:key="id"
 			@click="onClick(id)"
+			:to-location="toLocation"
 		>
 			{{ name }}
 		</section-container-component>
@@ -18,19 +19,23 @@ let id = 0;
 const items = ref([
 	{
 		id: id,
-		name: `Object ${id + 1}`,
+		name: `Homework Tracker`,
+		toLocation: `homework-tracker`,
+	},
+	{
+		id: id++,
+		name: `Task Tracker`,
+		toLocation: `task-tracker`,
+	},
+	{
+		id: id++,
+		name: `Calendar`,
+		toLocation: `calendar`,
 	},
 	{
 		id: id++,
 		name: `Object ${id + 1}`,
-	},
-	{
-		id: id++,
-		name: `Object ${id + 1}`,
-	},
-	{
-		id: id++,
-		name: `Object ${id + 1}`,
+		toLocation: `object ${id + 1}`,
 	},
 ]);
 

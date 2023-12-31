@@ -1,18 +1,39 @@
-import { RouteRecordRaw } from 'vue-router';
+import { RouteRecordRaw } from "vue-router";
+import MainLayout from "layouts/MainLayout.vue";
+import IndexLayout from "src/layouts/IndexLayout.vue";
+import IndexPage from "pages/IndexPage.vue";
+import ErrorNotFoundPage from "pages/ErrorNotFoundPage.vue";
+import HomeworkTrackerPage from "src/pages/HomeworkTrackerPage.vue";
+import TaskTrackerPage from "src/pages/TaskTrackerPage.vue";
+import CalendarPage from "src/pages/CalendarPage.vue";
 
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
-  },
-
-  // Always leave this as last one,
-  // but you can also remove it
-  {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue'),
-  },
+	{
+		path: `/`,
+		component: () => IndexLayout,
+		children: [{ path: ``, component: IndexPage }],
+	},
+	{
+		path: `/homework-tracker`,
+		component: () => MainLayout,
+		children: [{ path: ``, component: HomeworkTrackerPage }],
+	},
+	{
+		path: `/task-tracker`,
+		component: () => MainLayout,
+		children: [{ path: ``, component: TaskTrackerPage }],
+	},
+	{
+		path: `/calendar`,
+		component: () => MainLayout,
+		children: [{ path: ``, component: CalendarPage }],
+	},
+	// Always leave this as last one,
+	// but you can also remove it
+	{
+		path: `/:catchAll(.*)*`,
+		component: () => ErrorNotFoundPage,
+	},
 ];
 
 export default routes;

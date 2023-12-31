@@ -16,6 +16,8 @@
 				label="Go Home"
 				no-caps
 				ripple
+				rounded-borders
+				size="xl"
 			/>
 		</div>
 	</div>
