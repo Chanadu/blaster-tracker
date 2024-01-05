@@ -1,37 +1,49 @@
 import { RouteRecordRaw } from "vue-router";
+
 import MainLayout from "layouts/MainLayout.vue";
 import IndexLayout from "src/layouts/IndexLayout.vue";
+
 import IndexPage from "pages/IndexPage.vue";
 import ErrorNotFoundPage from "pages/ErrorNotFoundPage.vue";
+
 import HomeworkTrackerPage from "src/pages/HomeworkTrackerPage.vue";
-import TaskTrackerPage from "src/pages/TaskTrackerPage.vue";
+
+import TaskTrackerPage from "src/pages/TaskTracker/TaskTrackerPage.vue";
+import CreateNewTaskPage from "src/pages/TaskTracker/CreateNewTaskPage.vue";
+
 import CalendarPage from "src/pages/CalendarPage.vue";
 
 const routes: RouteRecordRaw[] = [
 	{
-		path: `/`,
+		path: "/",
 		component: () => IndexLayout,
-		children: [{ path: ``, component: IndexPage }],
+		children: [{ path: "", component: IndexPage }],
 	},
 	{
-		path: `/homework-tracker`,
+		path: "/homework-tracker",
 		component: () => MainLayout,
-		children: [{ path: ``, component: HomeworkTrackerPage }],
+		children: [{ path: "", component: HomeworkTrackerPage }],
 	},
 	{
-		path: `/task-tracker`,
+		path: "/task-tracker",
 		component: () => MainLayout,
-		children: [{ path: ``, component: TaskTrackerPage }],
+		children: [
+			{ path: "", component: TaskTrackerPage },
+			{
+				path: "create-new-task",
+				component: CreateNewTaskPage,
+			},
+		],
 	},
 	{
-		path: `/calendar`,
+		path: "/calendar",
 		component: () => MainLayout,
-		children: [{ path: ``, component: CalendarPage }],
+		children: [{ path: "", component: CalendarPage }],
 	},
 	// Always leave this as last one,
 	// but you can also remove it
 	{
-		path: `/:catchAll(.*)*`,
+		path: "/:catchAll(.*)*",
 		component: () => ErrorNotFoundPage,
 	},
 ];

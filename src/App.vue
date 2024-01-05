@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { useQuasar } from 'quasar';
+import { useQuasar } from "quasar";
 
 const $q = useQuasar();
 

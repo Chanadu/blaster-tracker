@@ -12,25 +12,25 @@
 </template>
 
 <script setup lang="ts">
-import SectionContainerComponent from "src/components/SectionContainerComponent.vue";
+import SectionContainerComponent from "src/components/index_components/SectionContainerComponent.vue";
 import { ref } from "vue";
 
 let id = 0;
 const items = ref([
 	{
 		id: id,
-		name: `Homework Tracker`,
-		toLocation: `homework-tracker`,
+		name: "Homework Tracker",
+		toLocation: "homework-tracker",
 	},
 	{
 		id: id++,
-		name: `Task Tracker`,
-		toLocation: `task-tracker`,
+		name: "Task Tracker",
+		toLocation: "task-tracker",
 	},
 	{
 		id: id++,
-		name: `Calendar`,
-		toLocation: `calendar`,
+		name: "Calendar",
+		toLocation: "calendar",
 	},
 	{
 		id: id++,

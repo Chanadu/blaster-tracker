@@ -12,8 +12,8 @@
 					Created: {{ createdDate?.toLocaleDateString() }}
 				</p>
 				<p v-else></p>
-				<p v-if="endDate">
-					Ends: {{ endDate?.toLocaleDateString() ?? "" }}
+				<p v-if="markedDate" class="text-negative">
+					Marked: {{ markedDate?.toLocaleDateString() ?? "" }}
 				</p>
 				<p v-else></p>
 			</div>
@@ -29,7 +29,7 @@
 defineProps({
 	title: String,
 	createdDate: Date,
-	endDate: Date,
+	markedDate: Date || null,
 	description: String,
 });
 </script>
