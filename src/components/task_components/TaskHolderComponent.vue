@@ -18,20 +18,58 @@
 				<p v-else></p>
 			</div>
 		</div>
-		<div class="column col-shrink q-px-md q-pb-sm flex justify-around">
-			<q-icon name="warning" size="sm"></q-icon>
-			<q-icon name="warning" size="sm"></q-icon>
+		<div class="column col-shrink q-pl-lg flex justify-around">
+			<q-btn size="md" round flat v-ripple @click="onDelete">
+				<q-icon name="delete" color="negative"></q-icon>
+			</q-btn>
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+import { useQuasar } from "quasar";
+import { Task, useTasksStore } from "src/stores/tasks";
+const props = defineProps({
+	id: Number,
 	title: String,
 	createdDate: Date,
 	markedDate: Date || null,
 	description: String,
 });
+
+const store = useTasksStore();
+const $q = useQuasar();
+
+function onDelete() {
+	const task = {
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		id: props.id!,
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		title: props.title!,
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		createdDate: props.createdDate!,
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		markedDate: props.markedDate!,
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		description: props.description!,
+	} as Task;
+	const result = store.deleteTask(task);
+	if (!result) {
+		$q.notify({
+			color: "dark",
+			textColor: "primary",
+			icon: "error",
+			message: "Failed to Delete Task",
+		});
+	} else {
+		$q.notify({
+			color: "dark",
+			textColor: "primary",
+			icon: "error",
+			message: `Deleted Task - ${task.title}`,
+		});
+	}
+}
 </script>
 
 <style scoped lang="scss">

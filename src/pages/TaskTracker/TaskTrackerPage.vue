@@ -3,6 +3,7 @@
 		<task-holder-component
 			v-for="{ id, title, description, createdDate, markedDate } in tasks"
 			:key="id"
+			:id="id"
 			:title="title"
 			:description="description"
 			:createdDate="createdDate"
@@ -24,11 +25,12 @@
 
 <script setup lang="ts">
 // import { ref } from "vue";
+import { storeToRefs } from "pinia";
 import TaskHolderComponent from "src/components/task_components/TaskHolderComponent.vue";
 import { useTasksStore } from "src/stores/tasks";
 
 const store = useTasksStore();
-const { tasks } = store;
+const { tasks } = storeToRefs(store);
 </script>
 
 <style scoped lang="scss">

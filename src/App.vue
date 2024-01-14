@@ -9,3 +9,5 @@ const $q = useQuasar();
 
 $q.dark.set(true);
 </script>
+
+
